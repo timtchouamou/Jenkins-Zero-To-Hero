@@ -107,10 +107,23 @@ Wait for the Jenkins to be restarted.
 
 ## Docker Slave Configuration
 
-Run the below command to Install Docker
-
-```
-sudo apt update
+## Run the below command to Install Docker
+To install Docker on CentOS 9, first add the Docker repository, then install the necessary packages. Finally, start and enable the Docker service, and verify the installation. 
+Detailed Steps:
+Update system packages:
+## Code sudo dnf update -y
+This ensures your system has the latest updates before installing Docker. 
+Remove any existing Docker installations:
+## Code sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+This removes any previous versions of Docker to prevent conflicts. 
+Install required dependencies:
+## Code sudo dnf install -y yum-utils device-mapper-persistent-data lvm2
+These dependencies are necessary for Docker to function correctly. 
+Add the Docker repository:
+## Code sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+This adds the Docker repository to your system, allowing you to download and install Docker packages. 
+Install Docker CE:
+## Code sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 sudo apt install docker.io
 ```
  
